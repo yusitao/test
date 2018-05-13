@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title></title>
+    <script language="javascript" src="Js/PopTableSelect.js"></script>
+</head>
+
+
+<script language="javascript">
+    window.onload = function (e) {
+        popTableSelectInit(6);
+    }
+</script>
+
+<body>
+    <form id="form1" runat="server">
+        <div style="top:100px; left:100px">
+            <pre>
+      弹出单位功能封装调用方法:
+      1. 首先包含PopTableSelect.js文件.
+      2. 在window.onload事件里调用popTableSelectInit函数,参数是弹出单位每行选择的列数.     
+          window.onload = function (e) {
+              popTableSelectInit(3);
+          }
+      3. 弹出单位选择的浮动框的宽度可以在id为divUnit的div标签里修改width.
+      4. 该封装模块可应用于其他数量不多的字典类信息的选择中.
+      5. 页面初始化时要从后台给id为unitInfo的隐藏文本框赋予待选择的字典信息,格式为"id|文本;id|文本;id|文本". 选择单位后会返回文本和ID值, 
+         保存ID值的文本框在实际运用中可隐藏.
+     </pre>
+
+            <div style="display:block; margin-left:100px">
+                <span>单位:</span>
+                <div style="position:relative">
+                    <input ID="Unit" ClientIDMode="Static" onClick="startSelect()" onkeydown="return handleKeydown()" onpropertychange="conChange()"
+                        runat="server" Width="192px" />
+                    <input id="ID" style="width:20px" />
+                    <img onclick="startSelect()" style="vertical-align:middle" src="images/lookup.gif" />
+                    <input id="unitInfo" style="display:none" value="1|个;2|包;3|套;4|辆;5|座;6|斤;7|匹;8|台;9|箱;10|盒;11|吨;12|具;13|瓶;22|根;23|面;24|头;25|只"
+                    />
+                    <div id="divUnit" style="position:absolute; top:24px; left:0px;  display:none;width:350px;border:solid 1px #d6e4fa; background-color:#F7F7F7;">
+                    </div>
+                </div>
+                <div>后面的元素后面的元素后面的元素后面的元素后面的元素后面的元素后面的元素。</div>
+            </div>
+
+        </div>
+    </form>
+</body>
+
+</html>
